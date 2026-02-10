@@ -10,7 +10,9 @@ namespace LuckySpin.Services
         }
 
         //TODO: Add DbSet properties as entities Players, Games, and Spins
-
+public DbSet<Player> Players { get; set; }
+public DbSet<Spin> Spins { get; set; }
+public DbSet<Game> Games { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
