@@ -37,6 +37,8 @@ namespace LuckySpin.Controllers
             if(!ModelState.IsValid) { return View(); }
 
             //TODO: Replace the SingletonUse DbContext to Add and Save the Player to the database
+            _context.Players.Add(player);
+            _context.SaveChanges();
             _repository.Player = player; 
             
             //TODO:Create a new Game with this Player and store it in the repository
@@ -45,12 +47,14 @@ namespace LuckySpin.Controllers
             };
 
             //TODO: Replace the SingletonUse DbContext to Add and Save the Player to the database
+            _context.Games.Add(game);
+            _context.SaveChanges();
             _repository.Game = game;
 
             //TODO: Start the Game
             _repository.Game.Start();
 
-            return RedirectToAction("Spin"); //TODO:Redirect to the Spin Action, passing the Game ID as a parameter
+            return RedirectToAction("Spin", new { Id = game.Id }); //TODO:Redirect to the Spin Action, passing the Game ID as a parameter
         }
 
         /***
@@ -63,11 +67,15 @@ namespace LuckySpin.Controllers
             
             //TODO:  Set the new Spin's the Game and GameId properties to link it database game
             Spin spin = new Spin();
+            spin.Game = game;
+            spin.GameId = game.Id;
 
             //TODO: Replace the Singleton _repository.Game with the game object from the database
             game.PlayTurn(spin);
 
-            // TODO: Use the DbContext to Add and save the ave the spin to the Database
+            // TODO: Use the DbContext to Add and save the spin to the Database
+            _context.Spins.Add(spin);
+            _context.SaveChanges();
 
             //Checks to see if the game is done (HINT: Use the Game Status)
             //.     if so, redirect to the LuckList Action to show the list of spins

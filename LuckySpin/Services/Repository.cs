@@ -8,16 +8,16 @@ namespace LuckySpin.Services
         // using the LuckySpinContext via DIJ. This will allow you to use 
         // methods to query the database for individual Games, Spins and Players based on the GameId, which is the common link between all three entities.
         //TODO: Inject the LuckySpinContext into the Repository using DIJ and save it in an instance variable
-
+        private LuckySpinContext _dbContext;
 
         //Methods for the Singleton data store
 
-        public required Player Player { get; set; }
-        public required Game Game { get; set; }
+        //public required Player Player { get; set; }
+        //public required Game Game { get; set; }
 
         //TODO: After switching to the database, uncomment these lines
         // Methods to get Database Game, Spins and Player for a given GameId
-       /**
+       
 
         public Game getGame(int GameId) {
             return _dbContext.Games.FirstOrDefault(g => g.Id == GameId) ?? new Game();
@@ -31,7 +31,7 @@ namespace LuckySpin.Services
             return _dbContext.Games.FirstOrDefault(g => g.Id == GameId)?.Player ?? new Player();
         }
 
-        **/
+        
 
     }
 
