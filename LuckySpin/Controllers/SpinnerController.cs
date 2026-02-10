@@ -39,7 +39,8 @@ namespace LuckySpin.Controllers
             //TODO: Replace the SingletonUse DbContext to Add and Save the Player to the database
             _context.Players.Add(player);
             _context.SaveChanges();
-            _repository.Player = player; 
+            _repository.getPlayer(player.Id);
+
             
             //TODO:Create a new Game with this Player and store it in the repository
             Game game = new Game(){ 
@@ -49,10 +50,10 @@ namespace LuckySpin.Controllers
             //TODO: Replace the SingletonUse DbContext to Add and Save the Player to the database
             _context.Games.Add(game);
             _context.SaveChanges();
-            _repository.Game = game;
+            //_repository.getGame() = game;
 
             //TODO: Start the Game
-            _repository.Game.Start();
+            //_repository.Game.Start();
 
             return RedirectToAction("Spin", new { Id = game.Id }); //TODO:Redirect to the Spin Action, passing the Game ID as a parameter
         }
@@ -63,7 +64,7 @@ namespace LuckySpin.Controllers
         public IActionResult Spin(int Id)
         {
              //TODO: Edit the line below to get the Game from the database using the Repository methods and the Id parameter
-              Game game = _repository.Game;
+              Game game = 
             
             //TODO:  Set the new Spin's the Game and GameId properties to link it database game
             Spin spin = new Spin();
