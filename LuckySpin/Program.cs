@@ -12,6 +12,10 @@ builder.Services.AddTransient<LuckySpin.Services.TextTransform>();
 builder.Services.AddSingleton<LuckySpin.Services.Repository>();
 //TODO: Register the Database service
 
+var connection = builder.Configuration.GetConnectionString("LuckySpinDbMac");
+builder.Services.AddDbContext<LuckySpin.Services.LuckySpinContext>( options => 
+options.UseSqlite(connection));
+
 var app = builder.Build();
 
 

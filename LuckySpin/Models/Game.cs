@@ -13,11 +13,12 @@ namespace LuckySpin.Models
     public class Game
     {
         //TODO: to switch to using the database, comment out this line of code 
-        private List<Spin> _spins = new List<Spin>(); //NOTE: This is an in-memory list of spins
+        //private List<Spin> _spins = new List<Spin>(); //NOTE: This is an in-memory list of spins
 
 
         //Game Properties
        //TODO: Add an Id property to the Game class to be used as the primary key in the database
+       public int Id { get; set; }
         public Player? Player { get; set; } //The Player playing this Game
         public ICollection<Spin> Spins { get; set; } = new List<Spin>(); //The list of Spins for this Game
 

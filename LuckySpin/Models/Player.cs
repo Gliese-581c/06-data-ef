@@ -4,6 +4,7 @@ namespace LuckySpin.Models
     public class Player
     {
         //TODO: Add an Id property of type int to be the primary key for the Player
+        public int Id { get; set; }
 
         [Required(ErrorMessage ="Name is required")]
         public string FirstName { get; set; }

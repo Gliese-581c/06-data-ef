@@ -13,13 +13,15 @@ namespace LuckySpin.Controllers
          * (2) In the Constructor, calls for a DIJ Repository object to be passed to the constructor
          **/
         //TODO: Include a DIJ DbContect object here to allow you to save changes to the database
+        private LuckySpin.Services.LuckySpinContext _context;
         private Repository _repository; // the repository provides access to the Games Spins
         //Constructor with DIJ Repository object
-        public SpinnerController (Repository repository)
+        public SpinnerController (Repository repository, LuckySpinContext context)
         {
             // (3) saves the DIJ Repository objects into your instance variables
 
             _repository = repository;
+            _context = context;
         }
         /***
          * Index Action (GET and POST)

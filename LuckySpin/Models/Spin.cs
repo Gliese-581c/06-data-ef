@@ -8,6 +8,7 @@ namespace LuckySpin.Models
         private int[] numbers; //a spin array;
 
         //TODO: add a primary key property called Id
+        public int Id { get; set; }
 
         //Added a Game and GameId property to link this Spin to the Game who made it (Foreign Key)
         public int GameId { get; set; } //Foreign Key to the Game who made this Spin
