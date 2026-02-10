@@ -1,0 +1,8 @@
+1.
+Jumbles results when multiple players access website.
+
+2.
+Doesn't allow for long-term storage. SQL databases are longer-lasting.
+
+3.
+When run by multiple users, overwrites names.
