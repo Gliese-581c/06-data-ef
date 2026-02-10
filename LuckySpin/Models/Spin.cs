@@ -1,0 +1,35 @@
+﻿using System;
+using System.Linq;
+namespace LuckySpin.Models
+{
+    public class Spin
+    {
+        Random random = new Random();
+        private int[] numbers; //a spin array;
+
+        //TODO: add a primary key property called Id
+
+        //Added a Game and GameId property to link this Spin to the Game who made it (Foreign Key)
+        public int GameId { get; set; } //Foreign Key to the Game who made this Spin
+        public Game Game { get; set; } //Navigation property to the Game that contains this Spin
+        public decimal RunningBalance { get; set; }
+        //Constructor
+        public Spin()
+        {
+            numbers = new int[] { random.Next(10), random.Next(10), random.Next(10) };
+        }
+
+        //Spin Properties
+        public int[] Numbers //Read only - the spin numbers are set in the constructor
+        { 
+            get { return numbers; }
+        } 
+     
+        //Spin Method   
+        public bool isWinning(Player player) //true if Player's Luck is one of the numbers
+        {
+            return (player == null) ?  false : numbers.Contains(player.Luck);
+        }
+    }
+
+}
